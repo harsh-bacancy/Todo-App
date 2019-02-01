@@ -2,20 +2,20 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
-
+import { addTodo} from '../action'
 // create a component
 class AddTodo extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            text:'',
+        this.state = {
+            text: '',
         }
     }
-    
+
 
     addTodo = (text) => {
-        console.log('onChnageText',text)
-        this.props.dispatch({ type: 'ADD_TODO', text })
+        console.log('onChnageText', text)
+        this.props.dispatch(addTodo(text))
         this.setState({ text: '' })
     }
 
