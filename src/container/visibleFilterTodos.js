@@ -3,7 +3,7 @@ import VisibilityFilter from '../component/VisibilityFilter'
 import { visibilityActive, visibilityAll, visibilityComleted } from '../action'
 
 const mapStateToProps = (state) => ({
-    visibility: state.visibility
+    visibiltyFilter: state.visibiltyFilter
 })
 const mapDispatchToProps = (dispatch) => ({
     visibilityActive: text => dispatch(visibilityActive(text)),

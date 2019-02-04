@@ -15,7 +15,10 @@ class AddTodo extends Component {
 
     addTodo = (text) => {
         console.log('onChnageText', text)
-        this.props.dispatch(addTodo(text))
+        if(text == '')
+        {}
+        else
+        {this.props.dispatch(addTodo(text))}
         this.setState({ text: '' })
     }
 
