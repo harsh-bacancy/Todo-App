@@ -3,7 +3,8 @@ import TodoList from '../component/TodoList'
 import { toggleTodo } from '../action'
 
 const mapStateToProps = (state) => ({
-    todos: state.todos
+    todos: state.todos,
+    visibility: state.visibility
 })
 const mapDispatchToProps = (dispatch) => ({
     toggleTodo: id => dispatch(toggleTodo(id))

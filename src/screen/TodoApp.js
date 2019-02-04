@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Platform, StyleSheet } from 'react-native'
 import AddTodo from './../container/AddTodo'
 import VisibleTodos from '../container/VisibleTodos'
-
+import VisibilityFilter from '../component/VisibilityFilter'
 export default class TodoApp extends Component {
     state = {
         todos: [],
@@ -13,6 +13,7 @@ export default class TodoApp extends Component {
         return (
             <View style={container}>
                 <AddTodo />
+                <VisibilityFilter/>
                 <VisibleTodos />
             </View>
         );
@@ -22,7 +23,7 @@ export default class TodoApp extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: Platform.OS  === 'ios' ? 35 : 15,
+        paddingTop: Platform.OS  === 'ios' ? 45 : 15,
         backgroundColor: '#FFF'
     }
 });

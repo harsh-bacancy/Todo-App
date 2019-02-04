@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create a component
 const TodoList = ({ todos, toggleTodo }) => {
-    console.log('todolist', todos.text)
+    console.log('todolist', todos.id)
     return (
         <View style={styles.container}>
             {todos.map(todo =>
