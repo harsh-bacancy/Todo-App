@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
-import { addTodo} from '../action'
+import { addTodo } from '../action'
 // create a component
 class AddTodo extends Component {
     constructor(props) {

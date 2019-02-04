@@ -1,4 +1,4 @@
-import {ADD_TODO,TOGGLE_TODO} from './ActionType'
+import { ADD_TODO, TOGGLE_TODO } from './ActionType'
 nextId = 0;
 export const addTodo = (text) => ({
     type: ADD_TODO,
@@ -6,7 +6,7 @@ export const addTodo = (text) => ({
     text,
 });
 
-export const toggleTodo = (id) =>({
-    type : TOGGLE_TODO,
+export const toggleTodo = (id) => ({
+    type: TOGGLE_TODO,
     id
 })

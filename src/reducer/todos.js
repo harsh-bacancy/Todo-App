@@ -1,7 +1,8 @@
+import  { ADD_TODO,TOGGLE_TODO} from '../action/ActionType'
 
 export default todos = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_TODO':
+        case ADD_TODO:
             return [
                 ...state, {
                     id: action.id,
@@ -9,7 +10,7 @@ export default todos = (state = [], action) => {
                     completed: false,
                 }
             ]
-        case 'TOGGLE_TODO':
+        case TOGGLE_TODO:
             return state.map(todo => (todo.id === action.id)
                 ?
                 { ...todo, completed: !todo.completed }

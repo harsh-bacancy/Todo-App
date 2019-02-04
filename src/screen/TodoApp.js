@@ -17,7 +17,7 @@ export default class TodoApp extends Component {
             </View>
         );
     }
-}
+}``
 
 const styles = StyleSheet.create({
     container: {

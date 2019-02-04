@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create a component
 const TodoList = ({ todos, toggleTodo }) => {
-    console.log('todolist',todos.text)
+    console.log('todolist', todos.text)
     return (
         <View style={styles.container}>
             {todos.map(todo =>
@@ -12,7 +12,7 @@ const TodoList = ({ todos, toggleTodo }) => {
                     <Text
                         style={{
                             fontSize: 24,
-                            marginVertical:5,
+                            marginVertical: 5,
                             textDecorationLine: todo.completed ? 'line-through' : 'none'
                         }}
                     >
@@ -28,7 +28,8 @@ const TodoList = ({ todos, toggleTodo }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        backgroundColor: 'red'
     },
 });
 
