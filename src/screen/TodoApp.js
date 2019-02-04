@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Platform, StyleSheet } from 'react-native'
 import AddTodo from './../container/AddTodo'
 import VisibleTodos from '../container/VisibleTodos'
 
@@ -17,11 +17,12 @@ export default class TodoApp extends Component {
             </View>
         );
     }
-}``
+} ``
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 15
+        marginTop: Platform.OS  === 'ios' ? 35 : 15,
+        backgroundColor: '#FFF'
     }
 });
