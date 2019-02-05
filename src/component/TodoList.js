@@ -3,10 +3,28 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create a component
-const TodoList = ({ todos, toggleTodo }) => {
+const TodoList = ({ todos, toggleTodo, visibilityAll, visibilityActive, visibilityCompleted }) => {
     console.log('todolist', todos.id)
     return (
         <View style={styles.container}>
+            <View style={styles.filterstyle}>
+                <TouchableOpacity onPress={() => visibilityAll('All')}>
+                    <Text style={styles.text}>
+                        All
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => visibilityActive('Active')}>
+                    <Text style={styles.text}>
+                        Active
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => visibilityCompleted('Completed')}>
+                    <Text style={styles.text}>
+                        Completed
+                    </Text>
+                </TouchableOpacity>
+            </View>
             {todos.map(todo =>
                 <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
                     <Text
@@ -31,6 +49,19 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         // backgroundColor: 'red'
     },
+    filterstyle:{
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        // backgroundColor: '#eaeaea',
+        flexDirection: 'row',
+        width: '100%',
+        height: 50,
+        // marginHorizontal: 20,
+    },
+    text:{
+        fontSize: 20,
+        color: '#000' 
+    }
 });
 
 //make this component available to the app
