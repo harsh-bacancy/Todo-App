@@ -3,7 +3,9 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create a component
-const VisibilityFilter = ({visibilityAll, visibilityActive, visibilityComleted}) => {
+const VisibilityFilter = ({visibilityAll, visibilityActive, visibilityCompleted}) => {
+
+    // const all ='All'
     return (
         <View style={styles.container}>
             <View>
@@ -21,7 +23,7 @@ const VisibilityFilter = ({visibilityAll, visibilityActive, visibilityComleted})
                 </TouchableOpacity>
             </View>
             <View>
-                <TouchableOpacity onPress={() => visibilityComleted('Comleted')}>
+                <TouchableOpacity onPress={() => visibilityCompleted('Completed')}>
                     <Text style={styles.text}>
                         Completed
                     </Text>

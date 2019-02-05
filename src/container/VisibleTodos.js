@@ -4,7 +4,7 @@ import { toggleTodo } from '../action'
 
 const mapStateToProps = (state) => ({
     todos: state.todos,
-    visibiltyFilter: state.visibiltyFilter
+    visibilityFilter: state.visibilityFilter
 })
 const mapDispatchToProps = (dispatch) => ({
     toggleTodo: id => dispatch(toggleTodo(id))

@@ -1,6 +1,6 @@
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from '../action/ActionType'
 
-export default visibiltyFilter = (state = [], action) => {
+export default visibilityFilter = (state = [], action) => {
     switch (action.type) {
         case SHOW_ALL:
             return {

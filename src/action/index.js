@@ -9,19 +9,19 @@ export const addTodo = (text) => ({
 export const toggleTodo = (id) => ({
     type: TOGGLE_TODO,
     id
-})
+});
 
 export const visibilityAll = (text) => ({
     type: SHOW_ALL,
     text
-})
+});
 
-export const visibilityComleted = (text) => ({
+export const visibilityCompleted = (text) => ({
     type: SHOW_COMPLETED,
     text
-})
+});
 
 export const visibilityActive = (text) => ({
     type: SHOW_ACTIVE,
     text
-})
+});
