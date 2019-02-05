@@ -3,8 +3,14 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create a component
-const TodoList = ({ todos, toggleTodo, visibilityAll, visibilityActive, visibilityCompleted }) => {
-    console.log('todolist', todos.id)
+const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibilityActive, visibilityCompleted }) => {
+    if (visibilityFilter.text == undefined) {
+        visibilityFilter.text = 'All'
+    }
+    const getvisibleTodos = ( todos ) => {
+        return todos
+    }
+    console.log('todolist', todos.id, visibilityFilter.text)
     return (
         <View style={styles.container}>
             <View style={styles.filterstyle}>
@@ -25,7 +31,7 @@ const TodoList = ({ todos, toggleTodo, visibilityAll, visibilityActive, visibili
                     </Text>
                 </TouchableOpacity>
             </View>
-            {todos.map(todo =>
+            {getvisibleTodos.map(todo =>
                 <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
                     <Text
                         style={{
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         // backgroundColor: 'red'
     },
-    filterstyle:{
+    filterstyle: {
         justifyContent: 'space-evenly',
         alignItems: 'center',
         // backgroundColor: '#eaeaea',
@@ -58,9 +64,9 @@ const styles = StyleSheet.create({
         height: 50,
         // marginHorizontal: 20,
     },
-    text:{
+    text: {
         fontSize: 20,
-        color: '#000' 
+        color: '#000'
     }
 });
 
