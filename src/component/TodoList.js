@@ -24,18 +24,18 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
         <View style={styles.container}>
             <View style={styles.filterstyle}>
                 <TouchableOpacity onPress={() => visibilityAll('All')}>
-                    <Text style={visibilityFilter.text == 'All' ? { fontSize: 25, color: '#000' } : styles.text}>
+                    <Text style={visibilityFilter.text == 'All' ? styles.textSelected : styles.text}>
                         All
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => visibilityActive('Active')}>
-                    <Text style={visibilityFilter.text == 'Active' ? { fontSize: 25, color: '#000' } : styles.text}>
+                    <Text style={visibilityFilter.text == 'Active' ? styles.textSelected : styles.text}>
                         Active
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => visibilityCompleted('Completed')}>
-                    <Text style={visibilityFilter.text == 'Completed' ? { fontSize: 25, color: '#000' } : styles.text}>
+                    <Text style={visibilityFilter.text == 'Completed' ? styles.textSelected : styles.text}>
                         Completed
                     </Text>
                 </TouchableOpacity>
@@ -44,8 +44,8 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
                 ?
                 <ScrollView>
                     {visibleTodos.map(todo =>
-                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems:'center' }} key={todo.id} onPress={() => toggleTodo(todo.id)}>
-                            <CheckBox value={todo.completed} onValueChange={() => toggleTodo(todo.id)}/>
+                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} key={todo.id} onPress={() => toggleTodo(todo.id)}>
+                            <CheckBox disable={todo.completed} value={todo.completed} onValueChange={() => toggleTodo(todo.id)} />
                             <Text
                                 style={{
                                     fontSize: 24,
@@ -98,6 +98,12 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         color: '#555'
+    },
+    textSelected: {
+        fontSize: 25,
+        color: '#000',
+        borderBottomColor: '#000',
+        borderBottomWidth: 1
     }
 });
 
