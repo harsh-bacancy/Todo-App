@@ -7,9 +7,17 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
     if (visibilityFilter.text == undefined) {
         visibilityFilter.text = 'All'
     }
-    const getvisibleTodos = ( todos ) => {
-        return todos
+    const getvisibleTodos = (todos) => {
+        switch (visibilityFilter.text) {
+            case 'All':
+                return todos
+            case 'Active':
+                return todos.filter(todo => !todo.completed)
+            case 'Completed':
+                return todos.filter(todo => todo.completed)
+        }
     }
+    const visibleTodos = getvisibleTodos(todos)
     console.log('todolist', todos.id, visibilityFilter.text)
     return (
         <View style={styles.container}>
@@ -31,7 +39,7 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
                     </Text>
                 </TouchableOpacity>
             </View>
-            {getvisibleTodos.map(todo =>
+            {visibleTodos.map(todo =>
                 <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
                     <Text
                         style={{
