@@ -1,19 +1,15 @@
 //import liraries
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, CheckBox } from 'react-native';
 
 // create a component
 const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibilityActive, visibilityCompleted }) => {
-    state = {
-        isEditable: true
-    }
     if (visibilityFilter.text == undefined) {
         visibilityFilter.text = 'All'
     }
     const getvisibleTodos = (todos) => {
         switch (visibilityFilter.text) {
             case 'All': {
-                // setIsEditable()
                 return todos
             }
             case 'Active':
@@ -28,26 +24,28 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
         <View style={styles.container}>
             <View style={styles.filterstyle}>
                 <TouchableOpacity onPress={() => visibilityAll('All')}>
-                    <Text style={styles.text}>
+                    <Text style={visibilityFilter.text == 'All' ? { fontSize: 25, color: '#000' } : styles.text}>
                         All
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => visibilityActive('Active')}>
-                    <Text style={styles.text}>
+                    <Text style={visibilityFilter.text == 'Active' ? { fontSize: 25, color: '#000' } : styles.text}>
                         Active
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => visibilityCompleted('Completed')}>
-                    <Text style={styles.text}>
+                    <Text style={visibilityFilter.text == 'Completed' ? { fontSize: 25, color: '#000' } : styles.text}>
                         Completed
                     </Text>
                 </TouchableOpacity>
             </View>
-            {visibilityFilter.text == 'All' ?
-                <View>
+            {visibilityFilter.text == 'All'
+                ?
+                <ScrollView>
                     {visibleTodos.map(todo =>
-                        <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
+                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems:'center' }} key={todo.id} onPress={() => toggleTodo(todo.id)}>
+                            <CheckBox value={todo.completed} onValueChange={() => toggleTodo(todo.id)}/>
                             <Text
                                 style={{
                                     fontSize: 24,
@@ -59,8 +57,10 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
                             </Text>
                         </TouchableOpacity>
                     )}
-                </View>
-                : <View>
+
+                </ScrollView>
+                :
+                <ScrollView>
                     {visibleTodos.map(todo =>
                         <Text
                             style={{
@@ -73,7 +73,7 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
                             {todo.text}
                         </Text>
                     )}
-                </View>
+                </ScrollView>
             }
         </View>
     );
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 20,
-        color: '#000'
+        color: '#555'
     }
 });
 
