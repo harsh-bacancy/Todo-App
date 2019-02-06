@@ -4,13 +4,18 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create a component
 const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibilityActive, visibilityCompleted }) => {
+    state = {
+        isEditable: true
+    }
     if (visibilityFilter.text == undefined) {
         visibilityFilter.text = 'All'
     }
     const getvisibleTodos = (todos) => {
         switch (visibilityFilter.text) {
-            case 'All':
+            case 'All': {
+                // setIsEditable()
                 return todos
+            }
             case 'Active':
                 return todos.filter(todo => !todo.completed)
             case 'Completed':
@@ -39,19 +44,37 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, visibilityAll, visibili
                     </Text>
                 </TouchableOpacity>
             </View>
-            {visibleTodos.map(todo =>
-                <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
-                    <Text
-                        style={{
-                            fontSize: 24,
-                            marginVertical: 5,
-                            textDecorationLine: todo.completed ? 'line-through' : 'none'
-                        }}
-                    >
-                        {todo.text}
-                    </Text>
-                </TouchableOpacity>
-            )}
+            {visibilityFilter.text == 'All' ?
+                <View>
+                    {visibleTodos.map(todo =>
+                        <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
+                            <Text
+                                style={{
+                                    fontSize: 24,
+                                    marginVertical: 5,
+                                    textDecorationLine: todo.completed ? 'line-through' : 'none'
+                                }}
+                            >
+                                {todo.text}
+                            </Text>
+                        </TouchableOpacity>
+                    )}
+                </View>
+                : <View>
+                    {visibleTodos.map(todo =>
+                        <Text
+                            style={{
+                                fontSize: 24,
+                                marginVertical: 5,
+                                textDecorationLine: todo.completed ? 'line-through' : 'none'
+                            }}
+                            key={todo.id}
+                        >
+                            {todo.text}
+                        </Text>
+                    )}
+                </View>
+            }
         </View>
     );
 };
